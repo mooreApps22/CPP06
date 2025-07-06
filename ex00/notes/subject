@@ -1,0 +1,64 @@
+EX00 NOTES - C++ casts
+
+	char c = 'a';
+
+	Class type converstions (classes are data types)
+
+		dynamic_cast<new_type> (expression)
+			only used w/ pointers & references to classes or void*
+			EX => randClassInstance = dynamic_cast<RandomClass*>(otherRandClassInstance);
+		static_cast<new_type> (expression)
+			like dynamic but it not safe
+		reinterpret_cast<new_type> (expression)
+			hacky, super unsafe
+		const_cast<new_type> (expression)
+			set/remove const of type
+
+
+	Make ScalarCoverter 
+		contain a static method:
+			convert(std::string value)
+		What it does: output its value in the following series of sclar types
+			char, int, float, double
+		This class doesn't need to store anything at all
+			can't be instantiable by users
+				except fo char parameters, only the decimal notation will be used
+					ex: 'c', 'a', ...
+		For simplicity, non-displayable characters shouldn't be used as inputs
+			if a conversion to char is not displayable, print a message
+		must handle 
+			Floats
+				-inff
+				+inff
+				nanf
+			Ints
+				-inf
+				+inf
+				nan
+		
+				
+		Detect the type of literal passed as a parameter
+			First, convert from string to its actual type
+			Second, convert it explicitly to the three other data types
+		If a conversion doesn't make any sense or overlflows display message?
+
+		Include headers for number limits and special values.
+
+
+		Expected output:
+
+			./convert 0
+			char: Non displayable
+			int: 0
+			float: 0.0f
+			double: 0.0
+			./convert nan
+			char: impossible
+			int: impossible
+			float: nanf
+			double: nan
+			./convert 42.0f
+			char: '*'
+			int: 42
+			float: 42.0f
+			double: 42.0

@@ -1,4 +1,5 @@
 #include "ScalarConverter.hpp"
+#include "Data.h"
 #include <string>
 #include <iostream>
 
@@ -12,17 +13,24 @@ std::string	makeLower(std::string input)
 	return (input);
 }
 
+// take in the data for the Data struct and then pass into serialize
+/*
+	Data* player
+	...
+	raw = serialize(player)
+	restored = deserialize(raw);
+	...
+*/
 int	main(void)
 {
 	std::string input;
 
-	std::cout << "Enter a scalar value to convert (or the quit command): " << std::endl;
+	std::cout << "Enter: " << std::endl;
 	while (std::cin >> input)
 	{
 		if (makeLower(input) == "quit" )
 			break ;
-		ScalarConverter::convert(input);
-		std::cout << "Enter a scalar value to convert (or the quit command): " << std::endl;
+		std::cout << "Enter: " << std::endl;
 	}
 	return (0);
 }

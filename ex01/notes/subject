@@ -1,2 +1,19 @@
-EX00 NOTES - C++ casts
+EX01 NOTES - C++ Serialization 
+
+	static Class Serializer
+		static methods	
+			uintptr_t	serialize(Data* ptr);
+				-> takes a pointer & converts it to the unsigned integer type uintptr_t
+			Data*		deserialize(uintptr_t raw);
+				-> It takes an unsigned integer type uintptr_t & converts it to a pointer to Data
+
+	Data Class
+		this class has to have non-empty data members
+
+	serialize() on the Data object address and pass the return into deserialize() 
+
+	ensure that the deserialize() return is equal to the original pointer
+
+
+
 

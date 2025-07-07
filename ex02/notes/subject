@@ -1,0 +1,29 @@
+Ex02
+
+	Identify Real Type
+
+	No class in this exercise has to Orthodox Canonical Form
+
+	Make a Base class
+		it has a public virtual destructor (so that makes it an Abstract Base Class, right)
+
+	Make three empty classes A, B, C (what is an empty class?) 
+		they inherit from Base 
+
+	Program Functions:
+	
+		Base*	generate(void);
+			this program function will randomly generate one of the three classes, A, B, C
+
+		void	identify(Base* p);
+			this will print the actual type of the object pointed to by p: "A" "B" "C"
+
+		void	identify(Base& p);
+			It prints the actual type of the object referenced by p: "A" "B" "C"
+				this function is not allowed to use a pointer 
+
+		typeinfo header is forbidden
+
+
+		
+

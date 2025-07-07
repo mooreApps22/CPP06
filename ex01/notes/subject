@@ -13,7 +13,3 @@ EX01 NOTES - C++ Serialization
 	serialize() on the Data object address and pass the return into deserialize() 
 
 	ensure that the deserialize() return is equal to the original pointer
-
-
-
-

@@ -6,17 +6,17 @@ PURPLE = \033[0;35m
 CYAN = \033[0;36m
 NORMAL = \033[0m
 
-NAME = convert 
+NAME = cereal
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 INC_DIR = ./inc
-HEADERS = $(INC_DIR)/ScalarConverter.hpp
+HEADERS = $(INC_DIR)/Serializer.hpp \
+			$(INC_DIR)/Data.h
 			
 SRC_DIR = ./src
 SRCS = $(SRC_DIR)/main.cpp \
-		$(SRC_DIR)/ScalarConverter.cpp \
-		$(SRC_DIR)/ScalarConverterConvert.cpp 
+		$(SRC_DIR)/Serializer.cpp
 			
 OBJ_DIR = ./obj
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)

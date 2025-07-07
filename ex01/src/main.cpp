@@ -1,36 +1,38 @@
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 #include "Data.h"
 #include <string>
 #include <iostream>
+#include <stdint.h>
+#include <cstddef>
+#include <cstring>
 
-std::string	makeLower(std::string input)
-{
-	typedef std::string::iterator Iterator;
-
-	for (Iterator it = input.begin(); it != input.end(); ++it) {
-		*it = static_cast<char>(std::tolower(*it));	
-	}
-	return (input);
-}
-
-// take in the data for the Data struct and then pass into serialize
-/*
-	Data* player
-	...
-	raw = serialize(player)
-	restored = deserialize(raw);
-	...
-*/
 int	main(void)
 {
-	std::string input;
+	Data*			player = new Data;
+	uintptr_t		raw;
+	Data*			restored;
 
-	std::cout << "Enter: " << std::endl;
-	while (std::cin >> input)
-	{
-		if (makeLower(input) == "quit" )
-			break ;
-		std::cout << "Enter: " << std::endl;
-	}
+	std::cout << "Enter player name: " << std::endl;
+	std::cin >> player->name;
+	std::cout << "Enter player level: " << std::endl;
+	std::cin >> player->level;
+	std::cout << "Enter player health: " << std::endl;
+	std::cin >> player->health;
+	std::cout << "The player's state is set. Serializing..." << std::endl;
+
+	raw = Serializer::serialize(player);
+
+	std::cout << "Raw uintptr_t value: " << raw << std::endl;
+	std::cout << "Original pointer: " << player << std::endl;
+
+	restored = Serializer::deserialize(raw);
+
+	std::cout << "Deserialized  pointer: " << restored << std::endl;
+	std::cout << "Player's state has been restored: " << std::endl;
+	std::cout << "\tRestored name: " << restored->name << std::endl;
+	std::cout << "\tRestored level: " << restored->level << std::endl;
+	std::cout << "\tRestored health: " << restored->health << std::endl;
+	std::cout << std::endl;
+	delete player;
 	return (0);
 }
